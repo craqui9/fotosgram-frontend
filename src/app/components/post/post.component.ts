@@ -10,6 +10,8 @@ export class PostComponent implements OnInit {
 
   @Input() post: Post = {};
 
+  img1 = '/assets/perro-1.jpg';
+
   constructor() { }
 
   ngOnInit() {}
