@@ -13,13 +13,14 @@
   </ion-item>
 
   <!-- ngif imgs -->
-  <ion-slides pager="true">
+  <!-- <ion-slides pager="true">
     <ion-slide class="image-slide"
                [style]="img1 | domSanitizer">
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
 
   <!-- mapa -->
+  <app-mapa [coords]="post.coords"></app-mapa>
 
 
   <ion-item lines="none">
