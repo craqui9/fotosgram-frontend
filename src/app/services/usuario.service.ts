@@ -14,7 +14,7 @@ const URL = environment.url;
 export class UsuarioService {
 
   token: string = null;
-  usuario: Usuario = {};
+  private usuario: Usuario = {};
 
   constructor(private http: HttpClient,
               private storage: Storage,
@@ -72,6 +72,15 @@ export class UsuarioService {
 
   }
 
+  getUsuario(){
+
+    if(!this.usuario._id){
+      this.validaToken();
+    }
+
+    return {...this.usuario};
+  }
+
   async guardarToken(token: string){
 
     this.token = token;
@@ -115,6 +124,31 @@ export class UsuarioService {
                });
 
     });
+
+  }
+
+  actualizarUsuario(usuario: Usuario){
+
+    const headers = new HttpHeaders({
+      'x-token': this.token
+    });
+
+    return new Promise(resolve => {
+
+      this.http.post(`${URL}/user/update`, usuario, {headers})
+             .subscribe(resp => {
+                  
+              if(resp['ok']){
+                this.guardarToken(resp['token']);
+                resolve(true);                
+              }else{
+                resolve(false);
+              }
+           });
+
+    });
+
+    
 
   }
 
