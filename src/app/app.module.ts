@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    FileTransfer,
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
